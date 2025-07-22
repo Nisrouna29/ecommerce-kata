@@ -1,0 +1,12 @@
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Product List -->
+      <div class="flex-1" >
+        <app-product-list [class.hidden-force-screen]="showCart()"></app-product-list>
+      </div>
+
+      <!-- Shopping Cart Sidebar -->
+      <div class="lg:w-96" [class.hidden]="!showCart()" [class.block]="showCart()" >
+        <app-shopping-cart> </app-shopping-cart>
+
+      </div>
+    </div>
