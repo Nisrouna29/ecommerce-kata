@@ -19,8 +19,6 @@ import { filter, Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit {
   private routerSubscription!: Subscription;
   ngOnInit(): void {
-    this.checkOrdersRoute();
-    // Listen to route changes
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
