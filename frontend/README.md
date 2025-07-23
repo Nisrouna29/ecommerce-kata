@@ -6,7 +6,7 @@ Welcome to my E-Commerce shopping cart application! This responsive Angular app 
 
 ## 🎯 Features
 
-✅ **Product Listing** — Browse all products 
+✅ **Product Listing** — Browse all products   
 🔍 **Smart Search & Filter** — Search by product title, category, decsription or filter by category  
 👁️ **Product Details** — View more info by clicking the eye icon on any product  
 🛒 **Shopping Persistant Cart**  
