@@ -11,11 +11,8 @@ import java.util.UUID;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, UUID> {
-    // Find all orders ordered by creation date (newest first)
-    @Query("SELECT o FROM Order o ORDER BY o.createdAt DESC")
-    List<Order> findAllOrdersOrderByCreatedAtDesc();
 
-    // Alternative: Find by username
+    // find by username
     @Query("SELECT o FROM Order o WHERE o.user.username = :username ORDER BY o.createdAt DESC")
     List<Order> findOrdersByUsernameOrderByCreatedAtDesc(@Param("username") String username);
 }

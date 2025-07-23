@@ -54,13 +54,6 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public List<OrderSummaryDTO> getAllOrders() {
-        List<Order> orders = orderRepository.findAllOrdersOrderByCreatedAtDesc();
-        return orders.stream()
-                .map(OrderSummaryDTO::new)
-                .collect(Collectors.toList());
-    }
-
     public List<OrderSummaryDTO> getOrdersByUsername(String username) {
         List<Order> orders = orderRepository.findOrdersByUsernameOrderByCreatedAtDesc(username);
         return orders.stream()

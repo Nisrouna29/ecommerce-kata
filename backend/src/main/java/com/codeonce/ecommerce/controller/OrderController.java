@@ -28,10 +28,6 @@ public class OrderController {
         return ResponseEntity.ok("Order cancelled successfully");
     }
 
-    @GetMapping
-    public List<OrderSummaryDTO> getAllOrders() {
-        return orderService.getAllOrders();
-    }
 
     @GetMapping("/user/{username}")
     public List<OrderSummaryDTO> getOrdersByUsername(@PathVariable String username) {
