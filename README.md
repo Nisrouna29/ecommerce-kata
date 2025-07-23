@@ -9,7 +9,7 @@ Secure authentication with JWT, database management with JPA, standalone compone
 
 ### Backend – Spring Boot
 
-- 🧩 **Spring Boot 3**
+- 🧩 **Spring Boot 3.2**
 - 🔐 **JWT Authentication**
 - 🗃️ **Spring Data JPA**
 - 📡 **RESTful API**
