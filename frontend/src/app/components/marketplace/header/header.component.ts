@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, OnDestroy, OnInit, Output, signal } from '@angular/core';
 import { AppState } from '../../../store/app.state';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -16,7 +16,8 @@ import { filter, Subscription } from 'rxjs';
   styleUrls: ['./header.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+
   private routerSubscription!: Subscription;
   ngOnInit(): void {
     this.routerSubscription = this.router.events
@@ -66,7 +67,9 @@ export class HeaderComponent implements OnInit {
       this.showOrders.set(false);
     }
   }
-
+  ngOnDestroy(): void {
+   this.routerSubscription.unsubscribe();
+  }
 }
 
 
