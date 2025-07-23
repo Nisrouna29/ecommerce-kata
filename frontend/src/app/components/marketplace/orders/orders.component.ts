@@ -51,7 +51,7 @@ export class OrdersComponent implements OnInit {
     this.orderService.cancelOrder(orderId)
       .pipe(
         catchError((err) => {
-          alert(err.message);
+          alert(err.message || 'Failed to cancel order');
           return of(null);
         })
       )

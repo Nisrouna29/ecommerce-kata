@@ -39,13 +39,13 @@ export class ShoppingCartComponent {
     this.store.dispatch(CartActions.clearCart());
   }
 
-    createOrder(): void {
+  createOrder(): void {
     const productQuantities: { [productId: string]: number } = {};
     for (const item of this.cartItems()) {
       productQuantities[item.product.id] = item.quantity;
     }
-    const username = this.auth.getUsername()|| '';
-    this.orderService.createOrder( productQuantities, username ).subscribe({
+    const username = this.auth.getUsername() || '';
+    this.orderService.createOrder(productQuantities, username).subscribe({
       next: (order) => {
         this.clearCart();
         alert('order created successfully !');

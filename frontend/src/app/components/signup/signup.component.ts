@@ -32,10 +32,9 @@ export class SignupComponent {
       return;
     }
     this.authService.register(this.username, this.password).pipe(catchError((error) => {
-      this.loading.set(false);
       const message =
-        error?.error?.message || // custom error field
-        error?.error ||          // plain string error response
+        error?.error?.message ||
+        error?.error ||
         'An unknown error occurred';
       this.error.set(message);
       return throwError(() => new Error('register failed'));
