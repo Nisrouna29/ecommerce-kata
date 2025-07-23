@@ -7,6 +7,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { selectCartItems, selectCartTotal } from '../../../store/cart/cart.selector';
 import { AuthService } from '../../../services/auth.service';
 import { OrderService } from '../../../services/order.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -45,7 +46,14 @@ export class ShoppingCartComponent {
       productQuantities[item.product.id] = item.quantity;
     }
     const username = this.auth.getUsername() || '';
-    this.orderService.createOrder(productQuantities, username).subscribe({
+    this.orderService.createOrder(productQuantities, username).pipe(catchError((error) => {
+      console.error('Error creating order:', error);
+      console.log(error.status);
+      if (error.status !== 401 && error.status !== 403) {
+        alert('Failed to create order. Please try again later.');
+      }
+      return error;
+    })).subscribe({
       next: (order) => {
         this.clearCart();
         alert('order created successfully !');

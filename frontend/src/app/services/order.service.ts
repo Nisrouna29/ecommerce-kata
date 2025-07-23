@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
@@ -15,9 +15,9 @@ export class OrderService {
     return this.http.post(this.API_URL, { productQuantities, username }, {
       responseType: 'text'
     }).pipe(
-      catchError((error) => {
+      catchError((error: HttpErrorResponse) => {
         console.error('Error creating order:', error);
-        return throwError(() => new Error('Failed to create order. Please try again later.'));
+        return throwError(() => error);
       })
     );
   }
